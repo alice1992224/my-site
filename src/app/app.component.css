@@ -1,0 +1,10 @@
+#site-body {
+	height: 1000px;
+}
+
+#site-leftbar {
+  height: 100%;
+  width: 300px;
+  background: rgba(8, 8, 8, 0.73);
+  display: block;
+}

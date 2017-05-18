@@ -1,0 +1,35 @@
+#introduction-block {
+  background-color: #4b4b4b;
+  height: 130px;
+  padding: 10px;
+}
+
+ul.categories {
+  margin: 0;
+  padding-top: 30px;
+  padding-left: 0px;
+}
+
+ul.categories > li {
+  list-style: none;
+  color: white;
+  width: 100%;
+  line-height: 40px;
+  font-size: 15pt;
+  font-family: Arial,Microsoft JhengHei,Open Sans,sans-serif;
+  border-bottom-style: solid;
+  background: #443838;
+  border-bottom-width: 1px;
+}
+
+ul.categories > li.selected {
+  background: #983a3b;
+}
+
+ul.categories > li:hover {
+  background-color: rgba(221, 221, 221, 0.47);
+}
+
+ul.categories > li > span {
+  margin-left: 10px;
+}

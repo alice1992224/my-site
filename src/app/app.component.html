@@ -1,3 +1,10 @@
-<h1>
-  {{title}}
-</h1>
+<div>
+	<app-site-header (toggleLeftbarRequest)='changeLeftbarState()'></app-site-header>
+	<div id='site-body'>
+		<app-site-leftbar id='site-leftbar'
+                      [@leftbarState]="leftbar.state" >
+    </app-site-leftbar>
+		<app-site-content></app-site-content>
+	</div>
+</div>
+
