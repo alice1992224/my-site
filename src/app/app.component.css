@@ -1,5 +1,6 @@
 #site-body {
 	height: 1000px;
+  display: flex;
 }
 
 #site-leftbar {
@@ -7,4 +8,9 @@
   width: 300px;
   background: rgba(8, 8, 8, 0.73);
   display: block;
+}
+
+#site-content {
+  width: 100%;
+  background: rgba(128, 128, 128, 0.17);
 }
