@@ -7,6 +7,10 @@
   height: 100%;
   width: 300px;
   background: rgba(8, 8, 8, 0.73);
+  display: none;
+}
+
+#site-leftbar.show {
   display: block;
 }
 

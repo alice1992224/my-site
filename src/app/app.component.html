@@ -2,7 +2,7 @@
 	<app-site-header (toggleLeftbarRequest)='changeLeftbarState()'></app-site-header>
 	<div id='site-body'>
 		<app-site-leftbar id='site-leftbar'
-                      [@leftbarState]="leftbar.state" >
+                      [class.show]='isShowOnPage'>
     </app-site-leftbar>
 		<app-site-content id='site-content'></app-site-content>
 	</div>
