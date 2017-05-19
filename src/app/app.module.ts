@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { SiteHeaderComponent } from './site-header/site-header.component';
 import { SiteLeftbarComponent } from './site-leftbar/site-leftbar.component';
 import { SiteContentComponent } from './site-content/site-content.component';
+import { CategoryService } from './category.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { SiteContentComponent } from './site-content/site-content.component';
     HttpModule,
     MarkdownModule.forRoot(),
   ],
-  providers: [],
+  providers: [CategoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

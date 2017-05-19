@@ -11,8 +11,6 @@ export class AppComponent {
   isShowOnPage: boolean = true;
 
   changeLeftbarState(): void {
-
     this.isShowOnPage = (this.isShowOnPage) ? false : true;    
-    console.log('[Info] call changeLeftbarState method in AppComponent.');
   }
 }

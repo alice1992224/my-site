@@ -1,18 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 
-export class Category {
-	id: number;
-	name: string;
-}
+import { Category } from '../category';
+
+import { CategoryService } from '../category.service';
 
 @Component({
   selector: 'app-site-leftbar',
   templateUrl: './site-leftbar.component.html',
   styleUrls: ['./site-leftbar.component.css']
 })
+
 export class SiteLeftbarComponent implements OnInit {
 
   selectedCategory: Category;
+
+  categories: Category[] = [];
+  /*
   categories: Category[] = [
   	{
   		id: 1,
@@ -35,14 +38,15 @@ export class SiteLeftbarComponent implements OnInit {
   		name: '生活小語'
   	}
   ]
+  */
 
-  constructor() { }
+  constructor(private categoryService:CategoryService) { }
 
   ngOnInit() {
+    this.categoryService.getCategories().then(categories => this.categories = categories);
   }
 
   onSelect(category: Category): void {
-    console.log('select category');
     this.selectedCategory = category;
   }
 

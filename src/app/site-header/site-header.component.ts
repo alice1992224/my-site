@@ -15,7 +15,6 @@ export class SiteHeaderComponent implements OnInit {
   }
 
   toggleLeftBar(): void {
-    console.log('emit toggleLeftbarRequest event in SiteHeaderComponent');
     this.toggleLeftbarRequest.emit(null);
   }
 
