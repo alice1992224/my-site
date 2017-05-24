@@ -1,8 +1,28 @@
-<div id='introduction-block'></div>
+<div id='introduction-block'>
+  <div class='introductionImg-block'>
+    <img class='introductionImg' src='assets/images/head-img.jpg'/>
+  </div>
+  <div class='introductionText'>
+    <span>我是小雞</span>
+    <span>持續學習</span>
+    <span>認真生活!</span>
+    <span>認真玩!</span>
+  </div>
+</div>
+
 <ul class='categories'>
   <li *ngFor="let category of categories"
   (click)="onSelect(category)"
   [class.selected]="category === selectedCategory">
-    <span>{{category.name}}</span>
+    <a routerLink="/categories/{{category.id}}" >{{category.name}}</a>
+    <!--<a routerLink="/articles/2" routerLinkActive="active">{{category.name}}</a>-->
+  </li>
+</ul>
+
+<label class='last-aritcles-title'>分類文章</label>
+<ul class='last-articles'>
+  <li *ngFor="let article of latestArticles">
+    <a routerLink="/articles/{{article.id}}" >{{article.title}}</a>
+    <!--<a routerLink="/articles/2" >{{category.name}}</a>-->
   </li>
 </ul>

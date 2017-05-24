@@ -1,0 +1,23 @@
+.paragraph {
+  height: 300px;
+  overflow: hidden;
+  margin-bottom: 7px;
+}
+
+hr {
+  height: 2px;
+  border: 0;
+  box-shadow: 0 10px 10px -10px #082508 inset;
+}
+
+#content-outer {
+  padding: 20px;
+}
+
+.openArticleBtn {
+  background: #983a3b;
+  color: white;
+  border-style: none;
+  height: 30px;
+  width: 75px;
+}

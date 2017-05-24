@@ -1,12 +1,15 @@
 #introduction-block {
   background-color: #4b4b4b;
-  height: 130px;
-  padding: 10px;
+  height: 180px;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding-left: 10px;
 }
 
 ul.categories {
   margin: 0;
-  padding-top: 30px;
   padding-left: 0px;
 }
 
@@ -30,6 +33,59 @@ ul.categories > li:hover {
   background-color: rgba(221, 221, 221, 0.47);
 }
 
-ul.categories > li > span {
-  margin-left: 10px;
+ul.categories > li > a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+}
+
+.introductionImg-block {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+
+.introductionImg {
+  width: 90px;
+  height: 90px;
+}
+
+.introductionText {
+  color: white;
+  padding-top: 5px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  font-family: Arial,Microsoft JhengHei,Open Sans,sans-serif;
+  font-size: 12pt;
+}
+
+.last-aritcles-title {
+    color: white;
+    margin-top: 30px;
+    display: block;
+    font-size: 15pt;
+    border-bottom-style: solid;
+    text-align: center;
+}
+
+ul.last-articles {
+    font-size: 14pt;
+    line-height: 20px;
+    border-bottom-style: none;
+    padding-left: 25px;
+}
+
+ul.last-articles > li {
+  color: white;
+}
+
+ul.last-articles > li:before {
+  padding-right: 1px;
+}
+
+ul.last-articles > li > a {
+  color: white;
+  text-decoration: none;
 }

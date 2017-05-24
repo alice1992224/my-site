@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Category } from '../category';
+import { Article } from '../article';
 
 import { CategoryService } from '../category.service';
 
@@ -13,8 +14,9 @@ import { CategoryService } from '../category.service';
 export class SiteLeftbarComponent implements OnInit {
 
   selectedCategory: Category;
-
+  latestArticles: Article[] = [];
   categories: Category[] = [];
+
   /*
   categories: Category[] = [
   	{
@@ -43,11 +45,20 @@ export class SiteLeftbarComponent implements OnInit {
   constructor(private categoryService:CategoryService) { }
 
   ngOnInit() {
-    this.categoryService.getCategories().then(categories => this.categories = categories);
+    this.categoryService.getCategories()
+        .then(categories => this.categories = categories)
+        .then(()=>{
+          this.selectedCategory = this.categories[0];
+          this.categoryService.getArticlesByCategory(this.selectedCategory.id.toString())
+            .then(articles => this.latestArticles = articles);
+        });
+    
   }
 
   onSelect(category: Category): void {
     this.selectedCategory = category;
+    this.categoryService.getArticlesByCategory(this.selectedCategory.id.toString())
+        .then((articles) => {this.latestArticles = articles; console.log(this.latestArticles);});
   }
 
 }

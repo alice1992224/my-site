@@ -1,0 +1,8 @@
+<div *ngFor="let article of articles">
+  <div class='paragraph' >
+    <markdown path='{{articleBasePath}}/{{article.filename}}'></markdown>
+  </div>
+  <button class='openArticleBtn' (click)="openArticle(article)">展開文章</button>
+  <hr />
+</div>
+

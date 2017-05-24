@@ -4,7 +4,9 @@
 		<app-site-leftbar id='site-leftbar'
                       [class.show]='isShowOnPage'>
     </app-site-leftbar>
-		<app-site-content id='site-content'></app-site-content>
+    <div id='site-content'>
+      <router-outlet></router-outlet>
+    </div>
 	</div>
 </div>
 

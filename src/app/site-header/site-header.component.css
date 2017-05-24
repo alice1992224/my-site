@@ -2,6 +2,8 @@
 	height: 60px;
     background: #607D8B;
     display: flex;
+    justify-content: space-between;
+    flex-direction: row-reverse;
 }
 
 .title {
@@ -9,6 +11,7 @@
     font-family: Arial,Microsoft JhengHei,Open Sans,sans-serif;
     line-height: 60px;
     color: white;
+    margin-left: 10px;
 }
 
 .leftbar-toggle {
