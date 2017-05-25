@@ -1,0 +1,21 @@
+<div class='login-page'>
+  <div class='login-block'>
+    <div class='login-title'>
+      <span>Login</span>
+    </div>
+    <form class='login-form' [formGroup]="loginForm" novalidate>
+      <div class="input-block">
+        <label class="center-block">
+          <span style='margin-right:17px'>Account:</span>
+          <input class="form-control" formControlName="account">
+        </label>
+      </div>
+      <div class="input-block">
+        <label class="center-block">
+          <span>Password:</span>
+          <input class="form-control" formControlName="password">
+        </label>
+      </div>
+    </form>
+  </div>
+</div>
