@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http } from '@angular/http';
 
-import { Category } from './category';
-import { Article } from './article';
+import { Category } from '../category';
+import { Article } from '../article';
 
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
-export class ArticleService {
+export class CategoryService {
 
   private backendUrl = 'http:\/\/localhost:3000';
-  //private headers = new Headers({'Content-Type': 'application/json'});
+  private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(private http:Http) { }
 
@@ -19,23 +19,28 @@ export class ArticleService {
       return Promise.reject(error.message || error);
   }
 
-  getArticles(): Promise<Article[]> {
-    const url =  `${this.backendUrl}/articles`;
+  getCategories(): Promise<Category[]> {
+    const url =  `${this.backendUrl}/categories`;
     return this.http.get(url)
             .toPromise()
             .then(function(response){
-              return response.json() as Article[];
+              return response.json() as Category[];
            })
            .catch(this.handleError);
   }
 
-  getArticle(articleId:string): Promise<Article> {
-    const url =  `${this.backendUrl}/articles/${articleId}`;
+  getArticlesByCategory(categoryId:string): Promise<Article[]> {
+
+    if(!categoryId){
+      categoryId = '1';
+    }
+
+    const url =  `${this.backendUrl}/categories/${categoryId}/articles`;
     console.log(url);
     return this.http.get(url)
             .toPromise()
             .then(function(response){
-              return response.json() as Article;
+              return response.json() as Article[];
            })
            .catch(this.handleError);
   }

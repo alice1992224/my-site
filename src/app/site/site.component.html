@@ -1,0 +1,12 @@
+<div>
+  <app-site-header (toggleLeftbarRequest)='changeLeftbarState()'></app-site-header>
+  <div id='site-body'>
+    <app-site-leftbar id='site-leftbar'
+                      [class.show]='isShowOnPage'>
+    </app-site-leftbar>
+    <div id='site-content'>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+

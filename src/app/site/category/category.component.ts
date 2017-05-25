@@ -3,7 +3,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 
 
 
-import { Article } from '../article';
+import { Article } from '../../article';
 import { CategoryService } from '../category.service';
 
 
