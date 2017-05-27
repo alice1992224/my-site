@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -10,7 +11,8 @@ export class LoginComponent {
 
   loginForm: FormGroup;
 
-  constructor(private fb: FormBuilder) { // <--- inject FormBuilder
+  constructor(private fb: FormBuilder,
+              private router: Router) { // <--- inject FormBuilder
     this.createForm();
   }
 
@@ -20,6 +22,17 @@ export class LoginComponent {
       password: ['', Validators.required],
     });
   }
+
+  submitLogin(): void{
+    console.log('in submitLogin');
+    console.log(this.loginForm.get('account').value);
+    console.log(this.loginForm.get('password').value);
+    if(this.loginForm.get('account').value == 'chicken' &&
+       this.loginForm.get('password').value == 'chicken'){
+      this.router.navigate(['/admin']);
+    }
+  }
+
   /*
   isShowOnPage: boolean = true;
 

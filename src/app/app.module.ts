@@ -19,6 +19,7 @@ import { LoginRoutingModule } from './login/login-routing.module';
 //import { CategoryComponent } from './category/category.component';
 
 import { SiteModule } from './site/site.module';
+import { AdminModule } from './admin/admin.module';
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import { SiteModule } from './site/site.module';
     //MarkdownModule.forRoot(),
     SiteModule,
     LoginRoutingModule,
+    AdminModule,
     AppRoutingModule,
   ],
   providers: [
