@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 //import { MarkdownModule } from 'angular2-markdown';
 
@@ -15,6 +15,8 @@ import { CategoryComponent } from './category/category.component';
 */
 import { AdminRoutingModule } from './admin-routing.module';
 import { AdminComponent } from './admin.component';
+import { CategoryComponent } from './category/category.component';
+import { ArticleComponent } from './article/article.component';
 
 
 @NgModule({
@@ -24,11 +26,14 @@ import { AdminComponent } from './admin.component';
     //SiteContentComponent,
     //ArticleComponent,
     //CategoryComponent,
-    AdminComponent
+    AdminComponent,
+    CategoryComponent,
+    ArticleComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     AdminRoutingModule,
     //MarkdownModule.forRoot(),

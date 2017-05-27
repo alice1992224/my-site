@@ -29,7 +29,7 @@ export class LoginComponent {
     console.log(this.loginForm.get('password').value);
     if(this.loginForm.get('account').value == 'chicken' &&
        this.loginForm.get('password').value == 'chicken'){
-      this.router.navigate(['/admin']);
+      this.router.navigate(['/admin/categories']);
     }
   }
 

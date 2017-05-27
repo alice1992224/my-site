@@ -1,15 +1,15 @@
 import { NgModule }             from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-//import { ArticleComponent } from './article/article.component';
-//import { CategoryComponent } from './category/category.component';
+import { ArticleComponent } from './article/article.component';
+import { CategoryComponent } from './category/category.component';
 import { AdminComponent } from './admin.component';
 
 const adminRoutes: Routes = [
   { 
     path: 'admin',
     component: AdminComponent,
-    /*
+    
     children: [
       {
         path: 'articles',
@@ -20,7 +20,6 @@ const adminRoutes: Routes = [
         component: CategoryComponent
       }
     ]
-    */
   },
 ];
 @NgModule({

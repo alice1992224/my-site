@@ -1,0 +1,18 @@
+.admin-nav {
+  background: #607D8B;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+}
+
+.admin-nav > a {
+  line-height: 50px;
+  width: 20%;
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  font-size: 15pt;
+  border-right-style: solid;
+  border-right-width: 2px;
+  box-sizing: border-box;
+}

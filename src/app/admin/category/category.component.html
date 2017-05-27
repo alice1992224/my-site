@@ -1,0 +1,22 @@
+<div id='admin-category-page'>
+  <div id='admin-category-list'>
+    <ul class="categories">
+      <li *ngFor="let category of categories"
+        (click)="onSelect(category)"
+        [class.selected]="category === selectedCategory">
+        <span class="badge">{{category.id}}</span>
+        <span>{{category.name}}</span>
+        <button class="delete"
+            (click)="delete(category); $event.stopPropagation()">X</button>
+      </li>
+      <li class='add-category-item'>
+        <span class="badge">{{categoriesNum+1}}</span>
+        <input type='text' [formControl]="newCategoryName">
+        <button class="add" type='button'
+            (click)="add(newCategoryName.value); ">+</button>
+      </li>
+    </ul>
+  </div>
+  <div id='admin-category-detail'>
+  </div>
+</div>
