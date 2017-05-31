@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormControl } from '@angular/forms';
+import { FormControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Category } from './../../category';
 import { CategoryService } from './../../site/category.service';
@@ -11,16 +11,19 @@ import { CategoryService } from './../../site/category.service';
   styleUrls: ['./category.component.css']
 })
 export class CategoryComponent implements OnInit {
+  @ViewChild('newNameInput') newNameInputEl: ElementRef;
 
   selectedCategory: Category;
   categories: Category[];
   categoriesNum: number;
+  categoryForm: FormGroup;
 
   newCategoryName = new FormControl();
   
   constructor(
     private categoryService: CategoryService,
-    private router: Router
+    private router: Router,
+    private fb: FormBuilder,
   ){};
 
   ngOnInit() {
@@ -32,6 +35,14 @@ export class CategoryComponent implements OnInit {
         .then(()=>{
           this.selectedCategory = this.categories[0];
         });
+    this.createForm();
+  }
+
+  createForm(): void {
+    this.categoryForm = this.fb.group({
+      id: ['', Validators.required], 
+      name: ['', Validators.required],
+    });
   }
   
   onSelect(category: Category): void {
@@ -39,45 +50,50 @@ export class CategoryComponent implements OnInit {
   }
 
   add(name: string): void {
-    console.log('in add');
-    console.log(name);
-    // id = categoriesNum+1
-    // add new category in database
-    // categoriesNum++
+     
+    let tmp: Category = {
+      'id': this.categoriesNum+1,
+      'name': name
+    };
+
+    this.categoryService.create(tmp)
+        .then(category => {
+          this.categoriesNum = this.categoriesNum+1;
+          this.categories.push(tmp);
+          this.newNameInputEl.nativeElement.value = null;
+        })
   }
 
   delete(category: Category): void {
-    console.log('delete category:'+category.name);
+    this.categoryService.delete(category.id)
+        .then(() => {
+          this.categories = this.categories.filter( c => c != category);
+          if( this.selectedCategory === category ) { this.selectedCategory = null; }
+          this.categoriesNum = this.categoriesNum - 1;
+        })
   }
 
-  /*
-  
-  getHeroes(): void {
-    this.heroService.getHeroes().then(heroes => this.heroes = heroes);
-  }
+  save(): void {
 
-  gotoDetail(): void {
-    console.log('gotoDetail');
-    this.router.navigate(['/detail', this.selectedHero.id]);
-  }
+    var id = (this.categoryForm.get('id').value) ? 
+              this.categoryForm.get('id').value : this.selectedCategory.id;
+    var name = (this.categoryForm.get('name').value) ? 
+              this.categoryForm.get('name').value : this.selectedCategory.name;
 
-  add(name: string): void {
-    name = name.trim();
-    if(!name) { return; }
-    this.heroService.create(name)
-      .then( hero => {
-        this.heroes.push(hero);
-        this.selectedHero = null;
-      })
-  }
+    let updateInfo = {
+      'oldId': this.selectedCategory.id,
+      'newId': id,
+      'name': name,
+    };
 
-  delete(hero: Hero): void {
-    this.heroService.delete(hero.id)
-      .then( () => {
-        this.heroes = this.heroes.filter( h => h != hero);
-        if( this.selectedHero === hero ) { this.selectedHero = null; }
-      });
+    this.categoryService.update(updateInfo)
+        .then(newCategory => {
+          this.categories.map(category => {
+            if(category.id == updateInfo.oldId){
+              category.id = newCategory.id;
+              category.name = newCategory.name;
+            }
+          })
+        });
   }
-  */
-
 }

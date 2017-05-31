@@ -1,3 +1,81 @@
-<p>
-  article works!
-</p>
+<div id='admin-article-page'>
+  <div id='admin-article-list'>
+    <ul class="articles">
+      <li *ngFor="let article of articles"
+        (click)="onSelect(article)"
+        [class.selected]="article === selectedArticle">
+        <span class="badge">{{article.id}}</span>
+        <span>{{article.title}}</span>
+        <button class="delete"
+            (click)="delete(article); $event.stopPropagation()">X</button>
+      </li>
+
+
+      <li class='add-article-item'>
+        <span class="badge">{{articlesNum+1}}</span>
+        <input type='text' #newNameInput [formControl]="newArticleName">
+        <button class="add" type='button'
+            (click)="add(newArticleName.value); ">+</button>
+      </li>
+
+
+    </ul>
+  </div>
+  <div id='admin-article-detail'>
+    <div id='article-detail-outer' *ngIf="selectedArticle">
+      <form class='article-detail-form' [formGroup]="articleForm" novalidate>
+
+        <div class="input-block">
+          <label class="center-block">
+            <span>id:</span>
+            <input class="form-control" formControlName="id" value={{selectedArticle.id}} >
+          </label>
+        </div>
+
+        <div class="input-block">
+          <label class="center-block">
+            <span>Title:</span>
+            <input class="form-control" formControlName="title" value={{selectedArticle.title}}>
+          </label>
+        </div>
+
+        <div class="input-block">
+          <label class="center-block">
+            <span>Author:</span>
+            <input class="form-control" formControlName="author" value={{selectedArticle.author}}>
+          </label>
+        </div>
+
+        <div class="input-block">
+          <label class="center-block">
+            <span>Category</span>
+            <select class="form-control" formControlName="categoryId"
+                [(ngModel)]="selectedArticle.categoryId">
+                <option *ngFor="let category of categories" 
+                        [ngValue]="category.id">
+                        {{category.id}} {{category.name}}</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="input-block">
+          <label class="center-block">
+            <span>FileName:</span>
+            <input class="form-control" formControlName="fileName" value={{selectedArticle.filename}}>
+          </label>
+        </div>
+
+        <div class="input-block">
+          <label class="center-block">
+            <span>Publish Time:</span>
+            <input class="form-control" formControlName="publishTime" value={{selectedArticle.publishTime}}>
+          </label>
+        </div>
+
+        <div class='save-block' (click)="save()">
+          <button>Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

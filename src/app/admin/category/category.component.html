@@ -11,12 +11,31 @@
       </li>
       <li class='add-category-item'>
         <span class="badge">{{categoriesNum+1}}</span>
-        <input type='text' [formControl]="newCategoryName">
+        <input type='text' #newNameInput [formControl]="newCategoryName">
         <button class="add" type='button'
             (click)="add(newCategoryName.value); ">+</button>
       </li>
     </ul>
   </div>
   <div id='admin-category-detail'>
+    <div id='category-detail-outer' *ngIf="selectedCategory">
+      <form class='category-detail-form' [formGroup]="categoryForm" novalidate>
+        <div class="input-block">
+          <label class="center-block">
+            <span>id:</span>
+            <input class="form-control" formControlName="id" value={{selectedCategory.id}} >
+          </label>
+        </div>
+        <div class="input-block">
+          <label class="center-block">
+            <span>Name:</span>
+            <input class="form-control" formControlName="name" value={{selectedCategory.name}}>
+          </label>
+        </div>
+        <div class='save-block' (click)="save()">
+          <button>Save</button>
+        </div>
+      </form>
+    </div>
   </div>
 </div>

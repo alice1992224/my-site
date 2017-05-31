@@ -1,0 +1,155 @@
+#admin-article-page {
+  display: flex;
+  flex-direction: row;
+  height: 500px;
+}
+
+#admin-article-list {
+  width: 25%;
+  background: white;
+  display: flex;
+  justify-content: center;
+}
+
+#admin-article-detail {
+  width: 75%;
+  background: lightgray;
+}
+
+/* article-list */
+.selected {
+  background-color: #CFD8DC !important;
+  color: mediumvioletred;
+}
+.articles {
+  margin: 0 0 2em 0;
+  list-style-type: none;
+  padding: 0;
+  width: 20em;
+}
+.articles li {
+  cursor: pointer;
+  position: relative;
+  left: 0;
+  background-color: #EEE;
+  margin: .5em;
+  padding: .3em 0;
+  height: 1.6em;
+  border-radius: 4px;
+}
+.articles li:hover {
+  color: #607D8B;
+  background-color: #DDD;
+  left: .1em;
+}
+.articles li.selected:hover {
+  background-color: #BBD8DC !important;
+  color: mediumvioletred;
+}
+.articles .text {
+  position: relative;
+  top: -3px;
+}
+.articles .badge {
+  display: inline-block;
+  font-size: small;
+  color: white;
+  padding: 0.8em 0.7em 0 0.7em;
+  background-color: #607D8B;
+  line-height: 1em;
+  position: relative;
+  left: -1px;
+  top: -4px;
+  height: 1.8em;
+  margin-right: .8em;
+  border-radius: 4px 0 0 4px;
+}
+button {
+  font-family: Arial;
+  background-color: #eee;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  cursor: hand;
+}
+button:hover {
+  background-color: #cfd8dc;
+}
+button.delete, button.add {
+  float:right;
+  margin-top: 2px;
+  margin-right: .8em;
+  background-color: gray !important;
+  color:white;
+}
+
+.add-article-item > input {
+  position: absolute;
+  top: 3px;
+  height: 1.5em;
+  width: 13.4em;
+  font-family: Arial,Microsoft JhengHei,Open Sans,sans-serif;
+  font-size: 12pt;
+}
+
+/* article-detail */
+#admin-article-detail {
+  padding: 30px;
+}
+
+#article-detail-outer {
+  border-style: solid;
+  border-radius: 5px;
+  padding: 30px;
+  background: white;
+  border-width: 0px;
+}
+
+.input-block > .center-block {
+  display: flex;
+  margin: 10px;
+  height: 30px;
+}
+
+.input-block > .center-block > span {
+  display: block;
+  width: 120px;
+  line-height: 30px;
+  font-size: 14pt;
+  font-family: Arial,Microsoft JhengHei,Open Sans,sans-serif;
+}
+
+.input-block > .center-block > input,
+.input-block > .center-block > select {
+  border-style: none;
+  width: 250px;
+  border-radius: 5px;
+  box-sizing: border-box;
+  font-family: Arial,Microsoft JhengHei,Open Sans,sans-serif;
+  font-size: 12pt;
+  background: #eeeeee;
+  padding-left: 5px;
+}
+
+.save-block {
+  padding: 0 10px 10px 10px;
+}
+
+.save-block > button {
+  width: 320px;
+  border-radius: 5px;
+  background: grey;
+  border-style: none;
+  height: 30px;
+  padding: 0;
+  color: white;
+  font-size: 12pt;
+}
+
+
+/*
+Copyright 2017 Google Inc. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+*/

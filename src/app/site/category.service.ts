@@ -15,6 +15,7 @@ export class CategoryService {
   constructor(private http:Http) { }
 
   private handleError(error: any): Promise<any> {
+    console.log('error');
     console.error('An error occurred', error); // for demo purposes only
       return Promise.reject(error.message || error);
   }
@@ -43,5 +44,33 @@ export class CategoryService {
               return response.json() as Article[];
            })
            .catch(this.handleError);
+  }
+
+  update(updateInfo): Promise<Category> {
+    const url =  `${this.backendUrl}/categories/${updateInfo.oldId}`;
+    let category: Category = {
+      'id': updateInfo.newId,
+      'name': updateInfo.name
+    };
+    return this.http.put(url, JSON.stringify(category), {headers: this.headers})
+               .toPromise()
+               .then(()=> category)
+               .catch(this.handleError);
+  }
+
+  create(category: Category): Promise<Category> {
+    const url =  `${this.backendUrl}/categories/${category.id}`;
+    return this.http.post(url, JSON.stringify(category), {headers: this.headers})
+           .toPromise()
+           .then(() => category)
+           .catch(this.handleError)
+  }
+
+  delete(id: number): Promise<Category> {
+    const url =  `${this.backendUrl}/categories/${id}`;
+    return this.http.delete(url, {headers: this.headers})
+           .toPromise()
+           .then(() => null)
+           .catch(this.handleError)
   }
 }
