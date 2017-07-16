@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
 <div id='admin-article-page'>
   <div id='admin-article-list'>
     <ul class="articles">
@@ -25,54 +26,60 @@
     <div id='article-detail-outer' *ngIf="selectedArticle">
       <form class='article-detail-form' [formGroup]="articleForm" novalidate>
 
-        <div class="input-block">
-          <label class="center-block">
-            <span>id:</span>
-            <input class="form-control" formControlName="id" value={{selectedArticle.id}} >
-          </label>
+        <div class="input-block-outer">
+          <div class="input-block">
+            <label class="center-block">
+              <span>id:</span>
+              <input class="form-control" formControlName="id" value={{selectedArticle.id}} >
+            </label>
+          </div>
+
+          <div class="input-block">
+            <label class="center-block">
+              <span>Title:</span>
+              <input class="form-control" formControlName="title" value={{selectedArticle.title}}>
+            </label>
+          </div>
+
+          <div class="input-block">
+            <label class="center-block">
+              <span>Author:</span>
+              <input class="form-control" formControlName="author" value={{selectedArticle.author}}>
+            </label>
+          </div>
+
+          <div class="input-block">
+            <label class="center-block">
+              <span>Category</span>
+              <select class="form-control" formControlName="categoryId"
+                  [(ngModel)]="selectedArticle.categoryId">
+                  <option *ngFor="let category of categories" 
+                          [ngValue]="category.id">
+                          {{category.id}} {{category.name}}</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="input-block">
+            <label class="center-block">
+              <span>FileName:</span>
+              <input class="form-control" formControlName="fileName" value={{selectedArticle.filename}}>
+            </label>
+          </div>
+
+          <div class="input-block">
+            <label class="center-block">
+              <span>Publish Time:</span>
+              <input class="form-control" formControlName="publishTime" value={{selectedArticle.publishTime}}>
+            </label>
+          </div>
         </div>
 
-        <div class="input-block">
-          <label class="center-block">
-            <span>Title:</span>
-            <input class="form-control" formControlName="title" value={{selectedArticle.title}}>
-          </label>
+        <div class="markdown-input-block">
+          <textarea #simplemde class='markdown-input-block'></textarea>
         </div>
 
-        <div class="input-block">
-          <label class="center-block">
-            <span>Author:</span>
-            <input class="form-control" formControlName="author" value={{selectedArticle.author}}>
-          </label>
-        </div>
-
-        <div class="input-block">
-          <label class="center-block">
-            <span>Category</span>
-            <select class="form-control" formControlName="categoryId"
-                [(ngModel)]="selectedArticle.categoryId">
-                <option *ngFor="let category of categories" 
-                        [ngValue]="category.id">
-                        {{category.id}} {{category.name}}</option>
-            </select>
-          </label>
-        </div>
-
-        <div class="input-block">
-          <label class="center-block">
-            <span>FileName:</span>
-            <input class="form-control" formControlName="fileName" value={{selectedArticle.filename}}>
-          </label>
-        </div>
-
-        <div class="input-block">
-          <label class="center-block">
-            <span>Publish Time:</span>
-            <input class="form-control" formControlName="publishTime" value={{selectedArticle.publishTime}}>
-          </label>
-        </div>
-
-        <div class='save-block' (click)="save()">
+        <div class='save-block' (click)="saveArticleContent()">
           <button>Save</button>
         </div>
       </form>

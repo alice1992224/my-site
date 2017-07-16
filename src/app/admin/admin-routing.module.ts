@@ -9,19 +9,18 @@ const adminRoutes: Routes = [
   { 
     path: 'admin',
     component: AdminComponent,
-    
     children: [
       {
-        path: 'articles',
-        component: ArticleComponent
-      },
-      {
-        path: 'categories',
-        component: CategoryComponent
+        path: '',
+        children:[
+          { path: 'articles', component: ArticleComponent },
+          { path: 'categories', component: CategoryComponent }
+        ]
       }
     ]
   },
 ];
+
 @NgModule({
   imports: [
     RouterModule.forChild(adminRoutes)

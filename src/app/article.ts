@@ -5,4 +5,5 @@ export class Article {
   publishTime: string;
   author: string;
   title: string;
+  content: string;
 }

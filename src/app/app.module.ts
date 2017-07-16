@@ -4,7 +4,6 @@ import { HttpModule } from '@angular/http';
 import { MarkdownModule } from 'angular2-markdown';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 //import { SiteHeaderComponent } from './site-header/site-header.component';

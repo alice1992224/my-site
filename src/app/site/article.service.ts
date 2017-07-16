@@ -5,12 +5,13 @@ import { Category } from '../category';
 import { Article } from '../article';
 
 import 'rxjs/add/operator/toPromise';
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class ArticleService {
 
   private backendUrl = 'http:\/\/localhost:3000';
-  //private headers = new Headers({'Content-Type': 'application/json'});
+  private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(private http:Http) { }
 
@@ -31,12 +32,32 @@ export class ArticleService {
 
   getArticle(articleId:string): Promise<Article> {
     const url =  `${this.backendUrl}/articles/${articleId}`;
-    console.log(url);
     return this.http.get(url)
             .toPromise()
             .then(function(response){
               return response.json() as Article;
            })
            .catch(this.handleError);
+  }
+
+  getArticleContent(articleId:number): Promise<any> {
+    const url =  `${this.backendUrl}/articles/${articleId}/content`;
+    return this.http.get(url)
+               .toPromise()
+               .then(res => {
+                 return res.text();
+               });
+  }
+
+  modifyArticleContent(updateInfo): Promise<any> {
+    var articleId = updateInfo.articleId;
+    const url =  `${this.backendUrl}/articles/${articleId}/content`;
+    let data = {
+      'content': updateInfo.content
+    };
+    return this.http.put(url, JSON.stringify(data), {headers: this.headers})
+               .toPromise()
+               .then( res => res)
+               .catch(this.handleError);
   }
 }

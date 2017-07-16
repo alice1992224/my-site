@@ -1,7 +1,7 @@
 #admin-article-page {
   display: flex;
   flex-direction: row;
-  height: 500px;
+  /*height: 500px;*/
 }
 
 #admin-article-list {
@@ -13,7 +13,8 @@
 
 #admin-article-detail {
   width: 75%;
-  background: lightgray;
+  background: rgba(128, 128, 128, 0.17);
+  padding-top: 10px;
 }
 
 /* article-list */
@@ -95,21 +96,38 @@ button.delete, button.add {
 
 /* article-detail */
 #admin-article-detail {
-  padding: 30px;
+  padding-right: 30px;
+  padding-left: 30px;
 }
 
 #article-detail-outer {
   border-style: solid;
   border-radius: 5px;
-  padding: 30px;
-  background: white;
+  padding-top: 0px;
   border-width: 0px;
+}
+
+.markdown-input-block {
+  float: left;
+  background: white;
+  width: 100%;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  overflow-y: scroll;
+}
+
+.input-block-outer {
+}
+
+.input-block {
+  float: left;
+  width: 50%;
 }
 
 .input-block > .center-block {
   display: flex;
-  margin: 10px;
-  height: 30px;
+  margin: 5px;
+  height: 25px;
 }
 
 .input-block > .center-block > span {
@@ -128,12 +146,12 @@ button.delete, button.add {
   box-sizing: border-box;
   font-family: Arial,Microsoft JhengHei,Open Sans,sans-serif;
   font-size: 12pt;
-  background: #eeeeee;
+  background: white;
   padding-left: 5px;
 }
 
 .save-block {
-  padding: 0 10px 10px 10px;
+  padding: 0 10px 10px 0;
 }
 
 .save-block > button {
@@ -145,6 +163,10 @@ button.delete, button.add {
   padding: 0;
   color: white;
   font-size: 12pt;
+}
+
+.editor-toolbar {
+  background: white;
 }
 
 
